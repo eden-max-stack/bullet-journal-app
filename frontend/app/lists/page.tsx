@@ -82,9 +82,21 @@ export default function ListsPage() {
   return (
     <Layout>
       <div className="max-w-6xl">
-        <div className="mb-10">
-          <h1 className="text-3xl font-semibold text-foreground mb-2">Lists</h1>
-          <p className="text-muted-foreground">Create simple lists for anything worth tracking</p>
+        <div className="flex items-center justify-between mb-10">
+          <div>
+            <h1 className="text-3xl font-semibold text-foreground mb-2">Lists</h1>
+            <p className="text-muted-foreground">Create simple lists for anything worth tracking</p>
+          </div>
+          <button
+            onClick={() => {
+              const name = prompt('List name:');
+              if (name) handleCreateList(name);
+            }}
+            className="px-4 py-2.5 rounded-lg border border-border text-foreground hover:bg-sidebar-accent transition-colors flex items-center gap-2 whitespace-nowrap"
+          >
+            <Plus className="w-4 h-4" />
+            New List
+          </button>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
@@ -105,16 +117,6 @@ export default function ListsPage() {
                 </button>
               ))}
             </div>
-            <button
-              onClick={() => {
-                const name = prompt('List name:');
-                if (name) handleCreateList(name);
-              }}
-              className="w-full mt-4 px-4 py-2.5 rounded-lg border border-border text-foreground hover:bg-sidebar-accent transition-colors flex items-center justify-center gap-2"
-            >
-              <Plus className="w-4 h-4" />
-              New List
-            </button>
           </div>
 
           {/* List items */}
