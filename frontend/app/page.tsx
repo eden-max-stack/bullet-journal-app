@@ -77,31 +77,7 @@ export default function Landing() {
           <div className="relative hidden lg:block">
             <div className="space-y-4">
               {/* Feature Preview Cards */}
-              <div className="space-y-3">
-                <div className="bg-card border border-primary/20 rounded-xl p-4 hover:border-primary/40 transition-all duration-200 transform hover:-translate-y-1">
-                  <div className="flex items-center gap-3 mb-2">
-                    <div className="w-3 h-3 rounded-full bg-primary"></div>
-                    <span className="text-sm font-medium text-foreground">Lists & Collections</span>
-                  </div>
-                  <p className="text-xs text-muted-foreground">Track books, goals, and everything on your mind</p>
-                </div>
-
-                <div className="bg-card border border-accent/20 rounded-xl p-4 hover:border-accent/40 transition-all duration-200 transform hover:-translate-y-1 ml-8">
-                  <div className="flex items-center gap-3 mb-2">
-                    <div className="w-3 h-3 rounded-full bg-accent"></div>
-                    <span className="text-sm font-medium text-foreground">Habit Trackers</span>
-                  </div>
-                  <p className="text-xs text-muted-foreground">Monitor habits and see your progress unfold</p>
-                </div>
-
-                <div className="bg-card border border-primary/20 rounded-xl p-4 hover:border-primary/40 transition-all duration-200">
-                  <div className="flex items-center gap-3 mb-2">
-                    <div className="w-3 h-3 rounded-full bg-primary"></div>
-                    <span className="text-sm font-medium text-foreground">Wellness Dashboard</span>
-                  </div>
-                  <p className="text-xs text-muted-foreground">Track mood, stress, and sleep patterns</p>
-                </div>
-              </div>
+              <FeaturePreviewCards />
             </div>
           </div>
         </div>
@@ -122,7 +98,7 @@ export default function Landing() {
             title="Lists"
             description="Create collections for anything worth tracking. Books to read, movies to watch, bucket list items—keep everything organized."
             href="/lists"
-            color="from-primary"
+            color="bg-red-200 from-red-400"
           />
 
           <FeatureCard
@@ -130,7 +106,7 @@ export default function Landing() {
             title="Trackers"
             description="Build custom trackers for habits, exercise, meditation, or any metric that drives your growth."
             href="/trackers"
-            color="from-accent"
+            color="bg-blue-200 from-blue-400"
           />
 
           <FeatureCard
@@ -138,7 +114,7 @@ export default function Landing() {
             title="Wellness"
             description="Monitor your mental and physical health. Track mood, stress, and sleep to understand your patterns."
             href="/wellness"
-            color="from-destructive"
+            color="bg-green-200 from-green-400"
           />
 
           <FeatureCard
@@ -146,7 +122,7 @@ export default function Landing() {
             title="Logs & Reflections"
             description="Write across different timeframes—daily reflections, weekly plans, and aspirations for your future."
             href="/logs"
-            color="from-secondary"
+            color="bg-purple-200 from-purple-400"
           />
         </div>
 
@@ -278,6 +254,45 @@ function StatCard({
       <div className="text-primary">{icon}</div>
       <p className="text-xs text-muted-foreground uppercase tracking-wide font-medium">{label}</p>
       <p className="text-sm font-semibold text-foreground">{value}</p>
+    </div>
+  );
+}
+
+function FeaturePreviewCards() {
+  const cards = [
+    {
+      title: "Lists & Collections",
+      description: "Track books, goals, and everything on your mind",
+      dotColor: "bg-red-200",
+    },
+    {
+      title: "Habit Trackers",
+      description: "Monitor habits and see your progress unfold",
+      dotColor: "bg-blue-200",
+    },
+    {
+      title: "Wellness Dashboard",
+      description: "Track mood, stress, and sleep patterns",
+      dotColor: "bg-green-200",
+    },
+  ];
+
+  return (
+    <div className="space-y-4">
+      <div className="space-y-3">
+        {cards.map((card, index) => (
+          <div
+            key={index}
+            className="bg-card border border-primary/20 rounded-xl p-4 hover:border-primary/40 transition-all duration-200 transform hover:-translate-y-1"
+          >
+            <div className="flex items-center gap-3 mb-2">
+              <div className={`w-3 h-3 rounded-full ${card.dotColor}`}></div>
+              <span className="text-sm font-medium text-foreground">{card.title}</span>
+            </div>
+            <p className="text-xs text-muted-foreground">{card.description}</p>
+          </div>
+        ))}
+      </div>
     </div>
   );
 }

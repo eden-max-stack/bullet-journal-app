@@ -1,26 +1,149 @@
+/** @import must precede all other statements */
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap");
+
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
+@layer base {
+  /**
+   * Dark Navy & Cobalt Blue Theme
+   * Dark navy background with cobalt blue accents
+   * White text for high contrast
+  */
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
+    /* Dark navy background */
+    --background: 220 30% 12%;
+    --foreground: 0 0% 100%;
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+    /* Slightly lighter navy for cards */
+    --card: 220 28% 16%;
+    --card-foreground: 0 0% 100%;
+
+    --popover: 220 28% 16%;
+    --popover-foreground: 0 0% 100%;
+
+    /* Cobalt blue accent - vibrant and clear */
+    --primary: 220 85% 55%;
+    --primary-foreground: 220 30% 12%;
+
+    /* Secondary - lighter cobalt for variety */
+    --secondary: 220 70% 65%;
+    --secondary-foreground: 220 30% 12%;
+
+    /* Muted - light gray for secondary text */
+    --muted: 220 15% 65%;
+    --muted-foreground: 220 15% 75%;
+
+    /* Accent - bright cobalt */
+    --accent: 220 85% 55%;
+    --accent-foreground: 220 30% 12%;
+
+    /* Destructive - red/coral */
+    --destructive: 0 80% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    /* Borders - dark navy with slight blue tint */
+    --border: 220 25% 22%;
+    --input: 220 28% 20%;
+    --ring: 220 85% 55%;
+
+    /* Radius */
+    --radius: 0.5rem;
+
+    /* Sidebar styling */
+    --sidebar-background: 220 30% 12%;
+    --sidebar-foreground: 0 0% 100%;
+    --sidebar-primary: 220 85% 55%;
+    --sidebar-primary-foreground: 220 30% 12%;
+    --sidebar-accent: 220 40% 25%;
+    --sidebar-accent-foreground: 0 0% 100%;
+    --sidebar-border: 220 25% 22%;
+    --sidebar-ring: 220 85% 55%;
+  }
+
+  .dark {
+    /* Dark mode uses the same navy/cobalt scheme */
+    --background: 220 30% 12%;
+    --foreground: 0 0% 100%;
+
+    --card: 220 28% 16%;
+    --card-foreground: 0 0% 100%;
+
+    --popover: 220 28% 16%;
+    --popover-foreground: 0 0% 100%;
+
+    --primary: 220 85% 55%;
+    --primary-foreground: 220 30% 12%;
+
+    --secondary: 220 70% 65%;
+    --secondary-foreground: 220 30% 12%;
+
+    --muted: 220 15% 65%;
+    --muted-foreground: 220 15% 75%;
+
+    --accent: 220 85% 55%;
+    --accent-foreground: 220 30% 12%;
+
+    --destructive: 0 80% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 220 25% 22%;
+    --input: 220 28% 20%;
+    --ring: 220 85% 55%;
+
+    --sidebar-background: 220 30% 12%;
+    --sidebar-foreground: 0 0% 100%;
+    --sidebar-primary: 220 85% 55%;
+    --sidebar-primary-foreground: 220 30% 12%;
+    --sidebar-accent: 220 40% 25%;
+    --sidebar-accent-foreground: 0 0% 100%;
+    --sidebar-border: 220 25% 22%;
+    --sidebar-ring: 220 85% 55%;
+  }
+
+  * {
+    border-color: hsl(var(--border));
+  }
+
+  body {
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
+  }
+
+  :where(p, span, li, h1, h2, h3, h4, h5, h6, a, button, label, td, th) {
+    overflow-wrap: anywhere;
+    word-break: break-word;
+  }
+
+  pre,
+  code {
+    overflow-x: auto;
+    white-space: pre;
+  }
+
+  /* Warm, subtle card shadow */
+  .card-subtle {
+    box-shadow: 0 1px 3px rgb(0 0 0 / 0.08);
+  }
+
+  /* Checked/completed state styling */
+  .item-completed {
+    color: hsl(var(--muted-foreground));
+    text-decoration: line-through;
+    opacity: 0.7;
+  }
+
+  /* Soft focus states */
+  input:focus,
+  textarea:focus {
+    outline: 1px solid hsl(var(--primary));
+    outline-offset: 2px;
+  }
+
+  /* Smooth transitions for interactions */
+  button,
+  input,
+  textarea,
+  select {
+    transition: background-color 0.15s ease, color 0.15s ease, opacity 0.15s ease;
+  }
 }
